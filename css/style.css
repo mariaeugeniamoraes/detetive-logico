@@ -232,3 +232,36 @@ p { margin: 0 0 .8em; }
 .itens.armas .item::after { top: 50%; transform: translateY(-50%); right: 10px; }
 .itens.armas .item .nome { padding-right: 22px; }
 
+/* ---------- janelas ---------- */
+.fundo-modal.opaco { background: var(--mesa); }
+.fundo-modal { position: fixed; inset: 0; background: rgba(20, 19, 18, .62); display: grid; place-items: center; padding: 20px; z-index: 50; animation: aparecer .2s ease-out; }
+@keyframes aparecer { from { opacity: 0; } }
+.modal { width: min(560px, 100%); max-height: calc(100vh - 40px); overflow: auto; padding: 28px clamp(20px, 4vw, 34px); }
+.modal h2 { font-size: 1.6rem; margin-bottom: 12px; }
+.modal .acoes { display: flex; gap: 10px; flex-wrap: wrap; justify-content: flex-end; margin-top: 18px; }
+.modal .pista { margin-top: 6px; }
+.modal.grande { width: min(1100px, 100%); padding: 14px; }
+.modal.grande img { width: 100%; display: block; }
+.passagem { text-align: center; }
+.passagem strong { display: block; font-family: var(--f-titulo); font-weight: 400; font-size: clamp(2rem, 6vw, 3rem); margin: 8px 0 14px; }
+.acusacao-previa { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 6px 0 4px; }
+.acusacao-previa figure { margin: 0; text-align: center; font-size: .85rem; }
+.acusacao-previa img, .acusacao-previa svg { width: 100%; aspect-ratio: 1; object-fit: cover; border: 1px solid var(--linha); background: #e2ddd2; display: block; }
+.acusacao-previa .arma { aspect-ratio: 1; border: 1px solid var(--linha); display: grid; place-items: center; padding: 8px; font-family: var(--f-titulo); background: var(--papel-2); }
+.resultado-carimbo { text-align: center; margin: 4px 0 16px; }
+.resultado-carimbo .carimbo { font-size: 2rem; }
+
+/* ---------- resultado ---------- */
+.resultado { padding: 58px clamp(20px, 4vw, 48px) 34px; max-width: 980px; margin: 0 auto; }
+.resultado h2 { font-size: clamp(1.8rem, 4vw, 2.6rem); margin: 14px 0 8px; }
+.solucao { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin: 22px 0 28px; }
+.solucao figure { margin: 0; border: 1px solid var(--linha); padding: 8px; background: var(--papel); }
+.solucao img, .solucao svg { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block; background: #e2ddd2; }
+.solucao .arma { aspect-ratio: 4 / 3; display: grid; place-items: center; text-align: center; padding: 12px; font-family: var(--f-titulo); font-size: 1.25rem; background: var(--papel-2); }
+.solucao figcaption { margin-top: 8px; }
+.solucao figcaption span { display: block; font-size: .85rem; color: var(--grafite); }
+.passos { padding-left: 1.4rem; margin: 8px 0 24px; }
+.passos li { margin-bottom: .7rem; max-width: 72ch; }
+.passos b { font-family: var(--f-titulo); font-weight: 400; color: var(--vermelho); }
+
+.toast { position: fixed; left: 50%; bottom: calc(22px + env(safe-area-inset-bottom, 0px)); transform: translateX(-50%); background: var(--tinta); color: var(--papel); padding: .7rem 1.1rem; border-radius: 3px; z-index: 60; box-shadow: var(--sombra); animation: aparecer .2s; max-width: calc(100% - 40px); }
