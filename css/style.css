@@ -265,3 +265,50 @@ p { margin: 0 0 .8em; }
 .passos b { font-family: var(--f-titulo); font-weight: 400; color: var(--vermelho); }
 
 .toast { position: fixed; left: 50%; bottom: calc(22px + env(safe-area-inset-bottom, 0px)); transform: translateX(-50%); background: var(--tinta); color: var(--papel); padding: .7rem 1.1rem; border-radius: 3px; z-index: 60; box-shadow: var(--sombra); animation: aparecer .2s; max-width: calc(100% - 40px); }
+
+/* ---------- responsivo ---------- */
+@media (max-width: 1100px) {
+  .mesa-investigacao { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .dossie { grid-column: 1 / -1; display: grid; grid-template-columns: 260px 1fr; gap: 0 18px; }
+  .dossie .foto { grid-row: span 3; }
+}
+@media (max-width: 760px) {
+  .tela { padding: 18px 12px 90px; }
+  .mesa-investigacao { grid-template-columns: minmax(0, 1fr); }
+  .dossie { display: block; }
+  .dossie .acoes { position: sticky; bottom: calc(8px + env(safe-area-inset-bottom, 0px)); background: var(--papel); padding: 10px 0 2px; z-index: 5; }
+  .solucao { grid-template-columns: minmax(0, 1fr); }
+  .itens.fotos { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition: none !important; }
+}
+
+/* ---------- relógio da vez ---------- */
+.relogio { border: 1px solid var(--linha); background: var(--papel-2); padding: .55rem .75rem .65rem; border-radius: 3px; }
+.linha-relogio { display: flex; align-items: center; gap: 8px; }
+.linha-relogio svg { width: 20px; height: 20px; flex: none; color: var(--grafite); }
+.rotulo-tempo { flex: 1; color: var(--grafite); font-size: .9rem; }
+.relogio .tempo { font-family: var(--f-titulo); font-size: 1.9rem; line-height: 1; font-variant-numeric: tabular-nums; }
+.trilho { height: 5px; margin-top: 8px; background: var(--linha); border-radius: 3px; overflow: hidden; }
+.barra-tempo { height: 100%; width: 100%; background: var(--tinta); transition: width .25s linear; }
+.relogio.pausado .tempo { color: var(--grafite); }
+.relogio.urgente .tempo, .relogio.urgente svg { color: var(--vermelho); }
+.relogio.urgente .barra-tempo { background: var(--vermelho); }
+.relogio.final .tempo { animation: pulsar 1s ease-in-out infinite; }
+@keyframes pulsar { 50% { opacity: .4; } }
+.contagem.tempos button { width: auto; min-width: 64px; padding: 0 14px; font-size: 1.05rem; }
+.dica-tempo { font-size: .9rem; margin: -12px 0 18px; }
+@media (max-width: 760px) {
+  /* no celular, relógio e botões ficam presos no rodapé da tela */
+  .tela:has(.mesa-investigacao) { padding-bottom: 150px; }
+  .dossie .acoes {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 20; margin: 0; background: var(--papel);
+    padding: 8px 12px calc(10px + env(safe-area-inset-bottom, 0px)); box-shadow: 0 -10px 24px -14px rgba(0, 0, 0, .55);
+  }
+  .dossie .acoes { display: flex; flex-wrap: wrap; gap: 8px; }
+  .dossie .acoes .relogio { flex: 1 1 100%; padding: .4rem .6rem .5rem; }
+  .dossie .acoes .relogio .tempo { font-size: 1.5rem; }
+  .dossie .acoes .botao { flex: 1 1 0; min-width: 0; min-height: 44px; padding: .4rem .5rem; font-size: .86rem; }
+  .dossie .acoes .botao svg { display: none; }
+}
