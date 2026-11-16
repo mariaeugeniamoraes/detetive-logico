@@ -96,3 +96,67 @@ p { margin: 0 0 .8em; }
 .link-voltar { background: none; border: 0; color: var(--texto-mesa); cursor: pointer; font-family: var(--f-titulo); padding: .4rem 0; font-size: 1rem; }
 .link-voltar:hover { text-decoration: underline; }
 
+/* ---------- telas ---------- */
+.tela { max-width: 1240px; margin: 0 auto; padding: 28px 20px 60px; }
+.tela-titulo { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin: 6px 0 22px; }
+.tela-titulo h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); color: var(--texto-mesa); }
+.tela-titulo p { color: var(--texto-mesa-suave); margin: 0; }
+
+/* início */
+.inicio { min-height: calc(100vh - 40px); display: grid; place-items: center; padding: 28px 16px; }
+.capa { width: min(640px, 100%); padding: 56px clamp(24px, 6vw, 64px) 44px; transform: rotate(-.8deg); }
+.capa .marca-dagua { position: absolute; right: 18px; bottom: 4px; font-family: var(--f-formula); font-size: clamp(3rem, 12vw, 6.5rem); color: rgba(0, 0, 0, .045); line-height: 1; pointer-events: none; white-space: nowrap; }
+.capa h1 { font-size: clamp(2.6rem, 9vw, 4.6rem); letter-spacing: .02em; margin: 18px 0 10px; }
+.capa .carimbo { font-size: clamp(1rem, 2.6vw, 1.25rem); margin-bottom: 34px; }
+.capa .acoes { display: grid; gap: 12px; max-width: 320px; }
+.capa .rodape-capa { margin-top: 30px; font-size: .9rem; color: var(--grafite); }
+
+/* como jogar */
+.manual { padding: 34px clamp(22px, 4vw, 48px); max-width: 860px; }
+.manual h3 { font-size: 1.3rem; margin: 26px 0 8px; }
+.manual p, .manual li { max-width: 68ch; }
+.tabela-conectivos { width: 100%; border-collapse: collapse; margin: 6px 0 4px; }
+.tabela-conectivos th, .tabela-conectivos td { text-align: left; padding: .55rem .6rem; border-bottom: 1px solid var(--linha); vertical-align: top; }
+.tabela-conectivos th { font-family: var(--f-titulo); font-weight: 400; color: var(--grafite); }
+.simbolo { font-family: var(--f-formula); font-size: 1.35rem; color: var(--vermelho); }
+.regra-ded { border-left: 3px solid var(--vermelho); padding: .2rem 0 .2rem .9rem; margin: .7rem 0; }
+.regra-ded strong { font-family: var(--f-titulo); font-weight: 400; }
+.regra-ded .formula { font-family: var(--f-formula); }
+
+/* escolha do modo */
+.modos { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 22px; max-width: 860px; }
+.modo { padding: 26px 24px; display: grid; gap: 12px; align-content: start; }
+.modo h3 { font-size: 1.35rem; }
+
+/* cenários */
+.cenarios { display: grid; grid-template-columns: repeat(auto-fill, minmax(214px, 1fr)); gap: 26px 18px; }
+.pasta { position: relative; display: flex; flex-direction: column; padding: 16px 16px 18px; margin-top: 18px; }
+.pasta::before {
+  content: attr(data-aba); position: absolute; top: -26px; left: 14px; padding: 4px 14px 2px; background: var(--papel-2); color: var(--grafite);
+  font-family: var(--f-titulo); font-size: .82rem; border-radius: 4px 4px 0 0; box-shadow: 0 -2px 0 rgba(0, 0, 0, .04);
+}
+.pasta .foto { aspect-ratio: 16 / 10; overflow: hidden; border: 1px solid var(--linha); background: #e8e2d6; margin-bottom: 14px; }
+.pasta .foto img { width: 100%; height: 100%; object-fit: cover; object-position: center 62%; display: block; filter: grayscale(.35) contrast(1.02); transition: filter .2s; }
+.pasta:hover .foto img { filter: none; }
+.pasta h3 { font-size: 1.3rem; margin-bottom: 6px; }
+.pasta p { color: var(--grafite); flex: 1; }
+
+/* jogadores */
+.cadastro { padding: 30px clamp(20px, 4vw, 40px); max-width: 640px; }
+.contagem { display: flex; gap: 8px; margin: 8px 0 22px; flex-wrap: wrap; }
+.contagem button { width: 52px; height: 52px; border: 2px solid var(--tinta); background: transparent; color: var(--tinta); font-family: var(--f-titulo); font-size: 1.3rem; cursor: pointer; border-radius: 3px; }
+.contagem button[aria-pressed="true"] { background: var(--tinta); color: var(--papel); }
+.campo { display: grid; gap: 4px; margin-bottom: 14px; }
+.campo label { font-family: var(--f-titulo); font-size: .9rem; color: var(--grafite); }
+.campo input, .campo select {
+  border: 0; border-bottom: 2px solid var(--tinta); background: transparent; padding: .55rem .2rem; font-size: 1.1rem; color: var(--tinta); border-radius: 0; min-width: 0;
+}
+.campo select { border: 2px solid var(--tinta); border-radius: 3px; padding: .55rem .6rem; background: var(--papel); }
+.campo input:focus { outline: none; border-bottom-color: var(--vermelho-2); }
+.erro { color: var(--vermelho); font-weight: 600; min-height: 1.5em; }
+
+/* sala online */
+.codigo-sala { font-family: var(--f-titulo); font-size: clamp(2.4rem, 8vw, 3.6rem); letter-spacing: .12em; color: var(--vermelho); }
+.lista-sala { list-style: none; padding: 0; margin: 14px 0 22px; display: grid; gap: 8px; }
+.lista-sala li { display: flex; justify-content: space-between; border-bottom: 1px dashed var(--linha); padding: .4rem 0; }
+
