@@ -160,3 +160,75 @@ p { margin: 0 0 .8em; }
 .lista-sala { list-style: none; padding: 0; margin: 14px 0 22px; display: grid; gap: 8px; }
 .lista-sala li { display: flex; justify-content: space-between; border-bottom: 1px dashed var(--linha); padding: .4rem 0; }
 
+/* ---------- investigação ---------- */
+.barra { display: flex; align-items: center; justify-content: space-between; gap: 14px 22px; flex-wrap: wrap; padding: 14px 20px; margin-bottom: 18px; }
+.barra .caso { font-family: var(--f-titulo); font-size: 1.05rem; color: var(--grafite); }
+.vez { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.vez .rotulo { color: var(--grafite); font-size: .95rem; }
+.vez strong { font-family: var(--f-titulo); font-weight: 400; font-size: clamp(1.5rem, 3vw, 2rem); }
+.turno { font-family: var(--f-titulo); color: var(--grafite); }
+.jogadores-faixa { display: flex; gap: 6px; flex-wrap: wrap; list-style: none; padding: 0; margin: 0; }
+.jogadores-faixa li { font-size: .9rem; padding: .15rem .6rem; border: 1px solid var(--linha); border-radius: 99px; background: var(--papel-2); }
+.jogadores-faixa li.atual { border-color: var(--tinta); background: var(--tinta); color: var(--papel); }
+.jogadores-faixa li.fora { text-decoration: line-through; color: var(--grafite); }
+
+.mesa-investigacao { display: grid; grid-template-columns: 300px minmax(0, 1fr) 380px; gap: 18px; align-items: start; }
+@media (min-width: 1101px) { .dossie { position: sticky; top: 14px; } }
+.dossie, .quadro-pistas, .tabela { padding: 18px; }
+.dossie .foto { border: 1px solid var(--linha); margin: 0 0 12px; cursor: zoom-in; display: block; width: 100%; padding: 0; background: none; }
+.dossie .foto img { display: block; width: 100%; }
+.dossie h3 { font-size: 1.15rem; margin-bottom: 6px; }
+.dossie .misterio { font-size: .97rem; }
+.dossie .acoes { display: grid; gap: 10px; margin-top: 16px; }
+.contador { font-family: var(--f-titulo); color: var(--grafite); font-size: .95rem; margin-top: 8px; }
+.aviso { font-size: .92rem; background: var(--papel-2); border-left: 3px solid var(--vermelho); padding: .5rem .7rem; margin-top: 10px; }
+
+.titulo-coluna { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; margin-bottom: 12px; }
+.titulo-coluna h3 { font-size: 1.25rem; }
+.titulo-coluna span { color: var(--grafite); font-size: .9rem; }
+
+.pistas { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; }
+.pista { border: 1px solid var(--linha); background: var(--papel); padding: 14px 16px 12px; position: relative; }
+.pista.nova { animation: chegar .6s ease-out both; }
+@keyframes chegar { from { opacity: 0; transform: translateY(-10px) rotate(-1deg); } to { opacity: 1; transform: none; } }
+.pista .topo { display: flex; justify-content: space-between; gap: 10px; font-family: var(--f-titulo); font-size: .85rem; color: var(--grafite); margin-bottom: 6px; }
+.pista .frase { font-size: 1.08rem; margin: 0 0 8px; }
+.pista .linha-formula { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.formula { font-family: var(--f-formula); font-size: 1.45rem; letter-spacing: .02em; }
+.selo { font-size: .82rem; border: 1px solid var(--vermelho); color: var(--vermelho); border-radius: 99px; padding: .05rem .6rem; white-space: nowrap; }
+.legenda { margin: 8px 0 0; padding: 0; list-style: none; font-size: .9rem; color: var(--grafite); }
+.legenda b { font-family: var(--f-formula); color: var(--tinta); font-weight: 600; margin-right: .3em; }
+.vazio { border: 2px dashed var(--linha); padding: 26px 18px; text-align: center; color: var(--grafite); }
+
+/* tabela de eliminação */
+.legenda-marcas { display: flex; gap: 12px; flex-wrap: wrap; font-size: .85rem; color: var(--grafite); margin-bottom: 10px; }
+.legenda-marcas span::before { content: ""; display: inline-block; width: 11px; height: 11px; border-radius: 2px; margin-right: 5px; vertical-align: -1px; }
+.legenda-marcas .m-possivel::before { background: var(--possivel); }
+.legenda-marcas .m-eliminado::before { background: var(--eliminado); }
+.legenda-marcas .m-confirmado::before { background: var(--confirmado); }
+.grupo { margin-bottom: 16px; }
+.grupo h4 { font-family: var(--f-titulo); font-weight: 400; font-size: 1rem; margin: 0 0 8px; color: var(--grafite); }
+.itens { display: grid; gap: 6px; }
+.itens.fotos { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.itens.locais { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.item {
+  position: relative; display: flex; flex-direction: column; align-items: stretch; text-align: left; gap: 4px; padding: 5px; border: 2px solid var(--linha);
+  background: var(--papel); color: var(--tinta); cursor: pointer; border-radius: 3px; font-size: .84rem; line-height: 1.2; min-width: 0;
+}
+.item .nome { font-weight: 600; overflow-wrap: anywhere; }
+.item .papel { color: var(--grafite); font-size: .76rem; }
+.item img, .item svg { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 1px; background: #e2ddd2; }
+.itens.fotos .item img { aspect-ratio: 4 / 5; object-position: center 30%; }
+.itens.armas .item { flex-direction: row; align-items: center; padding: .45rem .6rem; font-size: .92rem; }
+.item::after { content: ""; position: absolute; top: 5px; right: 5px; width: 14px; height: 14px; border-radius: 50%; background: transparent; }
+.item[data-marca="possivel"] { border-color: var(--possivel); background: color-mix(in srgb, var(--possivel) 20%, var(--papel)); }
+.item[data-marca="eliminado"] { border-color: var(--eliminado); background: color-mix(in srgb, var(--eliminado) 14%, var(--papel)); }
+.item[data-marca="eliminado"] .nome { text-decoration: line-through; }
+.item[data-marca="eliminado"] img, .item[data-marca="eliminado"] svg { filter: grayscale(1); opacity: .55; }
+.item[data-marca="confirmado"] { border-color: var(--confirmado); background: color-mix(in srgb, var(--confirmado) 18%, var(--papel)); }
+.item[data-marca="possivel"]::after { background: var(--possivel); }
+.item[data-marca="eliminado"]::after { background: var(--eliminado); }
+.item[data-marca="confirmado"]::after { background: var(--confirmado); }
+.itens.armas .item::after { top: 50%; transform: translateY(-50%); right: 10px; }
+.itens.armas .item .nome { padding-right: 22px; }
+
