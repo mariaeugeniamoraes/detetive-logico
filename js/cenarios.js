@@ -361,6 +361,546 @@
         "artigo": "a"
       }
     ]
+  },
+  {
+    "id": "shopping",
+    "nome": "O Shopping Center",
+    "curto": "Shopping Center",
+    "descricao": "Portas fechadas, câmeras desligadas e um corpo encontrado na ronda da madrugada.",
+    "misterio": "Depois do fechamento, o vigia Sérgio Moura foi encontrado sem vida durante a ronda. As câmeras ficaram desligadas por vinte minutos. Seis pessoas ainda estavam no prédio.",
+    "imagem": "assets/imagens/cenarios/shopping.svg",
+    "larguraImagem": 1300.0,
+    "alturaImagem": 944.0,
+    "suspeitos": [
+      {
+        "id": "alberto",
+        "nome": "Sr. Alberto",
+        "papel": "O gerente geral",
+        "imagem": "assets/imagens/personagens/alberto.svg"
+      },
+      {
+        "id": "patricia",
+        "nome": "Patrícia",
+        "papel": "A segurança noturna",
+        "imagem": "assets/imagens/personagens/patricia.svg"
+      },
+      {
+        "id": "diego",
+        "nome": "Diego",
+        "papel": "O técnico de TI",
+        "imagem": "assets/imagens/personagens/diego.svg"
+      },
+      {
+        "id": "vanessa",
+        "nome": "Vanessa",
+        "papel": "A funcionária da limpeza",
+        "imagem": "assets/imagens/personagens/vanessa.svg"
+      },
+      {
+        "id": "renato",
+        "nome": "Renato",
+        "papel": "O lojista de eletrônicos",
+        "imagem": "assets/imagens/personagens/renato.svg"
+      },
+      {
+        "id": "luana",
+        "nome": "Luana",
+        "papel": "A arquiteta",
+        "imagem": "assets/imagens/personagens/luana.svg"
+      }
+    ],
+    "locais": [
+      {
+        "id": "praca-de-alimentacao",
+        "nome": "Praça de Alimentação",
+        "prep": "na",
+        "recorte": [
+          40,
+          410,
+          400,
+          220
+        ]
+      },
+      {
+        "id": "cinema",
+        "nome": "Cinema",
+        "prep": "no",
+        "recorte": [
+          40,
+          140,
+          300,
+          210
+        ]
+      },
+      {
+        "id": "loja-de-eletronicos",
+        "nome": "Loja de Eletrônicos",
+        "prep": "na",
+        "recorte": [
+          460,
+          140,
+          280,
+          210
+        ]
+      },
+      {
+        "id": "loja-de-roupas",
+        "nome": "Loja de Roupas",
+        "prep": "na",
+        "recorte": [
+          720,
+          140,
+          310,
+          210
+        ]
+      },
+      {
+        "id": "estacionamento-subterraneo",
+        "nome": "Estacionamento Subterrâneo",
+        "prep": "no",
+        "recorte": [
+          40,
+          640,
+          1220,
+          240
+        ]
+      },
+      {
+        "id": "sala-de-seguranca",
+        "nome": "Sala de Segurança",
+        "prep": "na",
+        "recorte": [
+          560,
+          410,
+          200,
+          220
+        ]
+      },
+      {
+        "id": "area-de-servico-docas",
+        "nome": "Área de Serviço/Docas",
+        "prep": "na",
+        "recorte": [
+          890,
+          410,
+          370,
+          220
+        ]
+      },
+      {
+        "id": "corredor-principal",
+        "nome": "Corredor Principal",
+        "prep": "no",
+        "recorte": [
+          40,
+          330,
+          1220,
+          100
+        ]
+      }
+    ],
+    "armas": [
+      {
+        "id": "extintor-de-incendio",
+        "nome": "Extintor de incêndio",
+        "artigo": "o"
+      },
+      {
+        "id": "bastao-de-seguranca",
+        "nome": "Bastão de segurança",
+        "artigo": "o"
+      },
+      {
+        "id": "trena-de-aco",
+        "nome": "Trena de aço",
+        "artigo": "a"
+      },
+      {
+        "id": "tesoura-industrial",
+        "nome": "Tesoura industrial",
+        "artigo": "a"
+      },
+      {
+        "id": "pe-de-cabra",
+        "nome": "Pé de cabra",
+        "artigo": "o"
+      },
+      {
+        "id": "fio-de-nylon",
+        "nome": "Fio de nylon",
+        "artigo": "o"
+      },
+      {
+        "id": "pedestal-de-fila-de-metal",
+        "nome": "Pedestal de fila de metal",
+        "artigo": "o"
+      },
+      {
+        "id": "barra-de-ferro-de-vitrine",
+        "nome": "Barra de ferro de vitrine",
+        "artigo": "a"
+      }
+    ]
+  },
+  {
+    "id": "trem",
+    "nome": "O Trem de Luxo Expresso",
+    "curto": "Trem de Luxo Expresso",
+    "descricao": "Uma viagem noturna, depoimentos que não batem e nenhuma parada até o amanhecer.",
+    "misterio": "No meio da viagem noturna, o magnata Vítor Prado foi encontrado morto. O trem não parou em nenhuma estação desde então. Todos os suspeitos estão a bordo.",
+    "imagem": "assets/imagens/cenarios/trem.svg",
+    "larguraImagem": 1000.0,
+    "alturaImagem": 824.0,
+    "suspeitos": [
+      {
+        "id": "joao",
+        "nome": "João",
+        "papel": "O maquinista",
+        "imagem": "assets/imagens/personagens/joao.svg"
+      },
+      {
+        "id": "helena",
+        "nome": "Duquesa Helena",
+        "papel": "A duquesa",
+        "imagem": "assets/imagens/personagens/helena.svg"
+      },
+      {
+        "id": "louis",
+        "nome": "Louis",
+        "papel": "O cantor de jazz",
+        "imagem": "assets/imagens/personagens/louis.svg"
+      },
+      {
+        "id": "clara",
+        "nome": "Clara",
+        "papel": "A jornalista",
+        "imagem": "assets/imagens/personagens/clara.svg"
+      },
+      {
+        "id": "paulo",
+        "nome": "Paulo",
+        "papel": "O comerciante",
+        "imagem": "assets/imagens/personagens/paulo.svg"
+      },
+      {
+        "id": "marta",
+        "nome": "Marta",
+        "papel": "A condutora",
+        "imagem": "assets/imagens/personagens/marta.svg"
+      }
+    ],
+    "locais": [
+      {
+        "id": "locomotiva",
+        "nome": "Locomotiva",
+        "prep": "na",
+        "recorte": [
+          30,
+          215,
+          228,
+          110
+        ]
+      },
+      {
+        "id": "cabine-do-maquinista",
+        "nome": "Cabine do Maquinista",
+        "prep": "na",
+        "recorte": [
+          240,
+          215,
+          110,
+          110
+        ]
+      },
+      {
+        "id": "vagao-leito-a",
+        "nome": "Vagão-Leito A",
+        "prep": "no",
+        "recorte": [
+          350,
+          515,
+          220,
+          110
+        ]
+      },
+      {
+        "id": "vagao-leito-b",
+        "nome": "Vagão-Leito B",
+        "prep": "no",
+        "recorte": [
+          130,
+          515,
+          220,
+          110
+        ]
+      },
+      {
+        "id": "vagao-restaurante",
+        "nome": "Vagão-Restaurante",
+        "prep": "no",
+        "recorte": [
+          570,
+          215,
+          240,
+          110
+        ]
+      },
+      {
+        "id": "vagao-fumace",
+        "nome": "Vagão-Fumacê",
+        "prep": "no",
+        "recorte": [
+          570,
+          515,
+          240,
+          110
+        ]
+      },
+      {
+        "id": "vagao-de-bagagens",
+        "nome": "Vagão de Bagagens",
+        "prep": "no",
+        "recorte": [
+          350,
+          215,
+          220,
+          110
+        ]
+      },
+      {
+        "id": "plataforma-de-conexao",
+        "nome": "Plataforma de Conexão",
+        "prep": "na",
+        "recorte": [
+          832,
+          340,
+          148,
+          160
+        ]
+      }
+    ],
+    "armas": [
+      {
+        "id": "chave-de-fenda",
+        "nome": "Chave de fenda",
+        "artigo": "a"
+      },
+      {
+        "id": "garrafa-de-vidro-pesada",
+        "nome": "Garrafa de vidro pesada",
+        "artigo": "a"
+      },
+      {
+        "id": "cinzeiro-de-metal",
+        "nome": "Cinzeiro de metal",
+        "artigo": "o"
+      },
+      {
+        "id": "bengala-de-metal",
+        "nome": "Bengala de metal",
+        "artigo": "a"
+      },
+      {
+        "id": "saca-rolhas-afiado",
+        "nome": "Saca-rolhas afiado",
+        "artigo": "o"
+      },
+      {
+        "id": "fita-adesiva-industrial",
+        "nome": "Fita adesiva industrial",
+        "artigo": "a"
+      },
+      {
+        "id": "extintor-compacto",
+        "nome": "Extintor compacto",
+        "artigo": "o"
+      },
+      {
+        "id": "alca-de-couro-de-mala",
+        "nome": "Alça de couro de mala",
+        "artigo": "a"
+      }
+    ]
+  },
+  {
+    "id": "acampamento",
+    "nome": "O Acampamento na Floresta",
+    "curto": "Acampamento na Floresta",
+    "descricao": "Isolados ao redor do lago, sem sinal de celular e com um segredo entre as barracas.",
+    "misterio": "Na manhã seguinte à fogueira, a coordenadora Cecília Ramos foi encontrada sem vida. A trilha estava bloqueada pela chuva: ninguém entrou nem saiu do acampamento.",
+    "imagem": "assets/imagens/cenarios/acampamento.svg",
+    "larguraImagem": 1000.0,
+    "alturaImagem": 824.0,
+    "suspeitos": [
+      {
+        "id": "lucas",
+        "nome": "Lucas",
+        "papel": "O guia",
+        "imagem": "assets/imagens/personagens/lucas.svg"
+      },
+      {
+        "id": "julia",
+        "nome": "Júlia",
+        "papel": "A campista",
+        "imagem": "assets/imagens/personagens/julia.svg"
+      },
+      {
+        "id": "bruno",
+        "nome": "Bruno",
+        "papel": "O fotógrafo",
+        "imagem": "assets/imagens/personagens/bruno.svg"
+      },
+      {
+        "id": "marina",
+        "nome": "Marina",
+        "papel": "A bióloga",
+        "imagem": "assets/imagens/personagens/marina.svg"
+      },
+      {
+        "id": "bernardo",
+        "nome": "Bernardo",
+        "papel": "O turista",
+        "imagem": "assets/imagens/personagens/bernardo.svg"
+      },
+      {
+        "id": "rosa",
+        "nome": "Rosa",
+        "papel": "A cozinheira",
+        "imagem": "assets/imagens/personagens/rosa.svg"
+      }
+    ],
+    "locais": [
+      {
+        "id": "refeitorio-central",
+        "nome": "Refeitório Central",
+        "prep": "no",
+        "recorte": [
+          590,
+          650,
+          280,
+          130
+        ]
+      },
+      {
+        "id": "cabana-1",
+        "nome": "Cabana 1",
+        "prep": "na",
+        "recorte": [
+          145,
+          145,
+          170,
+          120
+        ]
+      },
+      {
+        "id": "cabana-2",
+        "nome": "Cabana 2",
+        "prep": "na",
+        "recorte": [
+          420,
+          128,
+          170,
+          120
+        ]
+      },
+      {
+        "id": "lagoa",
+        "nome": "Lagoa",
+        "prep": "na",
+        "recorte": [
+          310,
+          345,
+          392,
+          235
+        ]
+      },
+      {
+        "id": "trilha-na-mata",
+        "nome": "Trilha na Mata",
+        "prep": "na",
+        "recorte": [
+          -320,
+          280,
+          1640,
+          370
+        ]
+      },
+      {
+        "id": "gerador-de-energia",
+        "nome": "Gerador de Energia",
+        "prep": "no",
+        "recorte": [
+          720,
+          140,
+          145,
+          115
+        ]
+      },
+      {
+        "id": "torre-de-observacao",
+        "nome": "Torre de Observação",
+        "prep": "na",
+        "recorte": [
+          35,
+          390,
+          140,
+          135
+        ]
+      },
+      {
+        "id": "deposito-de-equipamentos",
+        "nome": "Depósito de Equipamentos",
+        "prep": "no",
+        "recorte": [
+          810,
+          380,
+          170,
+          160
+        ]
+      }
+    ],
+    "armas": [
+      {
+        "id": "machado-de-lenha",
+        "nome": "Machado de lenha",
+        "artigo": "o"
+      },
+      {
+        "id": "faca-de-caca",
+        "nome": "Faca de caça",
+        "artigo": "a"
+      },
+      {
+        "id": "lanterna-pesada",
+        "nome": "Lanterna pesada",
+        "artigo": "a"
+      },
+      {
+        "id": "corda-de-nailon",
+        "nome": "Corda de náilon",
+        "artigo": "a"
+      },
+      {
+        "id": "frasco-de-repelente-inflamavel",
+        "nome": "Frasco de repelente inflamável",
+        "artigo": "o"
+      },
+      {
+        "id": "espeto-de-ferro",
+        "nome": "Espeto de ferro",
+        "artigo": "o"
+      },
+      {
+        "id": "galho-espinhoso",
+        "nome": "Galho espinhoso",
+        "artigo": "o"
+      },
+      {
+        "id": "pa-de-jardinagem",
+        "nome": "Pá de jardinagem",
+        "artigo": "a"
+      }
+    ]
   }
 ];
 
