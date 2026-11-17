@@ -49,6 +49,59 @@
     };
   }
 
-  raiz.Pistas = { frase, texto };
+  /* ---------- geração do crime e das pistas ---------- */
+  function gerarInvestigacao(cen, rnd = Math.random) {
+    const nS = cen.suspeitos.length, nL = cen.locais.length, nA = cen.armas.length;
+    for (let tentativa = 0; tentativa < 200; tentativa++) {
+      const S = inteiro(nS, rnd), Lc = inteiro(nL, rnd), A = inteiro(nA, rnd);
+      const oL = embaralhar(sem(nL, [Lc]), rnd);
+      const oA = embaralhar(sem(nA, [A]), rnd);
+      const oS = embaralhar(sem(nS, [S]), rnd);
+      const [d1, d2, lf, lx, lg] = oL;
+      const [w, u, y, y2] = oA;
+      const [q, m, e1, a1, b1] = oS;
+      const sL = (i) => atomo('L', i), sA = (i) => atomo('A', i), sS = (i) => atomo('S', i);
+
+      const papel = {};
+      papel.disjLocal = ou(...embaralhar([sL(Lc), sL(d1), sL(d2)], rnd));
+      papel.negLocal = nao(sL(d1));
+      papel.condLocalArma = se(sL(d2), sA(w));
+      papel.condArmaSuspeito = se(sA(w), sS(q));
+      papel.negSuspeito = rnd() < .5 ? nao(sS(q)) : e(nao(sS(q)), nao(sS(m)));
+      papel.condLocalArmas = se(sL(Lc), ou(...embaralhar([sA(A), sA(u)], rnd)));
+      papel.negArma = rnd() < .5 ? nao(sA(u)) : e(nao(sA(u)), nao(sL(lx)));
+      papel.bicond = rnd() < .5 ? sse(sS(S), sA(A)) : sse(sA(A), sS(S));
+
+      const extras = embaralhar([
+        sse(sS(e1), sL(lf)),                 // bicondicional com os dois lados falsos
+        e(nao(sS(a1)), nao(sS(b1))),         // conjunção de negações
+        nao(sA(y)),                          // negação simples
+        ou(...embaralhar([sS(S), sS(q)], rnd)), // disjunção resolvida por silogismo disjuntivo
+        se(sA(y2), sL(lg))                   // condicional eliminada por modus tollens
+      ], rnd).slice(0, 3);
+
+      const exprs = [...Object.values(papel), ...extras];
+      const verdadeiro = { S, L: Lc, A };
+      if (!exprs.every(x => L.avaliar(x, verdadeiro))) continue;
+      const sols = L.solucoes(exprs, cen);
+      if (sols.length !== 1) continue;
+      // nenhuma pista sozinha pode entregar uma resposta inteira
+      const entrega = exprs.some(x => {
+        const s1 = L.solucoes([x], cen);
+        return ['S', 'L', 'A'].some(k => s1.every(w2 => w2[k] === s1[0][k]));
+      });
+      if (entrega) continue;
+
+      const pistas = embaralhar(exprs.map(x => montarPista(x, cen)), rnd).map((p, i) => ({ ...p, id: i }));
+      const passos = [];
+      // as proposições ficam separadas (servem para os testes); a partida salva só os textos
+      const proposicoes = pistas.map(p => p.expr);
+      pistas.forEach(p => { delete p.expr; });
+      return { solucao: verdadeiro, pistas, passos, proposicoes };
+    }
+    throw new Error('Não foi possível montar as pistas');
+  }
+
+  raiz.Pistas = { gerarInvestigacao, frase, texto };
   if (typeof module !== 'undefined') module.exports = raiz.Pistas;
 })(typeof window !== 'undefined' ? window : globalThis);
