@@ -93,7 +93,21 @@
       if (entrega) continue;
 
       const pistas = embaralhar(exprs.map(x => montarPista(x, cen)), rnd).map((p, i) => ({ ...p, id: i }));
-      const passos = [];
+      const fraseDe = (expr) => pistas.find(p => p.expr === expr).frase;
+      const nomeL = (i) => `${cen.locais[i].prep} ${cen.locais[i].nome}`;
+      const nomeA = (i) => `${cen.armas[i].artigo} ${cen.armas[i].nome}`;
+      const sS_ = cen.suspeitos[S].nome, sq = cen.suspeitos[q].nome;
+      const restam = papel.disjLocal.itens.map(x => cen.locais[x.i].nome);
+      const passos = [
+        { regra: 'Disjunção', texto: `“${fraseDe(papel.disjLocal)}” Só restam ${listaComOu(restam).replace(' ou ', ' e ')}.` },
+        { regra: 'Negação', texto: `“${fraseDe(papel.negLocal)}” Sobram ${cen.locais[Lc].nome} e ${cen.locais[d2].nome}.` },
+        { regra: 'Silogismo hipotético', texto: `“${fraseDe(papel.condLocalArma)}” e “${fraseDe(papel.condArmaSuspeito)}” Juntas: se o crime aconteceu ${nomeL(d2)}, então ${sq} cometeu o crime.` },
+        { regra: 'Modus tollens', texto: `“${fraseDe(papel.negSuspeito)}” Como ${sq} não cometeu o crime, o crime não aconteceu ${nomeL(d2)}.` },
+        { regra: 'Silogismo disjuntivo', texto: `Das três opções, só sobrou uma: o crime aconteceu ${nomeL(Lc)}.` },
+        { regra: 'Modus ponens', texto: `“${fraseDe(papel.condLocalArmas)}” Como o crime aconteceu ${nomeL(Lc)}, a arma foi ${nomeA(A)} ou ${nomeA(u)}.` },
+        { regra: 'Silogismo disjuntivo', texto: `“${fraseDe(papel.negArma)}” Então a arma foi ${nomeA(A)}.` },
+        { regra: 'Bicondicional', texto: `“${fraseDe(papel.bicond)}” Como a arma foi ${nomeA(A)}, ${sS_} cometeu o crime.` }
+      ];
       // as proposições ficam separadas (servem para os testes); a partida salva só os textos
       const proposicoes = pistas.map(p => p.expr);
       pistas.forEach(p => { delete p.expr; });
