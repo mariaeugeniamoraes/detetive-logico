@@ -86,7 +86,32 @@
   const NOME_CONECTIVO = { nao: 'Negação', e: 'Conjunção', ou: 'Disjunção', se: 'Condicional', sse: 'Bicondicional', atomo: 'Proposição simples' };
   const SIMBOLO_CONECTIVO = { nao: '¬', e: '∧', ou: '∨', se: '→', sse: '↔', atomo: '' };
 
+  /* ---------- tabela de eliminação ----------
+     Cada item fica sem marcação, possível, eliminado ou confirmado.
+     Cada detetive tem a própria tabela, e as marcações nunca mexem na solução. */
+  const ESTADOS_MARCA = ['', 'possivel', 'eliminado', 'confirmado'];
+  const NOME_MARCA = { '': 'sem marcação', possivel: 'possível', eliminado: 'eliminado', confirmado: 'confirmado' };
 
-  raiz.Logica = { atomo, nao, e, ou, se, sse, avaliar, solucoes, atomos, representar, textoAtomo, NOME_CONECTIVO, SIMBOLO_CONECTIVO };
+  function proximaMarca(atual) {
+    return ESTADOS_MARCA[(ESTADOS_MARCA.indexOf(atual || '') + 1) % ESTADOS_MARCA.length];
+  }
+  function novaTabela() { return { S: {}, L: {}, A: {} }; }
+  function completarTabela(t) { t.S = t.S || {}; t.L = t.L || {}; t.A = t.A || {}; return t; }
+  /* Uma tabela por jogador: a de um nunca é a mesma do outro. */
+  function tabelaDoJogador(tabelas, jogadorId) {
+    if (!tabelas[jogadorId]) tabelas[jogadorId] = novaTabela();
+    return completarTabela(tabelas[jogadorId]);
+  }
+  /* Avança a marcação de um item e devolve o novo estado. */
+  function marcarItem(tabela, cat, i) {
+    const nova = proximaMarca(tabela[cat][i]);
+    if (nova) tabela[cat][i] = nova; else delete tabela[cat][i];
+    return nova;
+  }
+
+  raiz.Logica = {
+    atomo, nao, e, ou, se, sse, avaliar, solucoes, atomos, representar, textoAtomo, NOME_CONECTIVO, SIMBOLO_CONECTIVO,
+    ESTADOS_MARCA, NOME_MARCA, proximaMarca, novaTabela, completarTabela, tabelaDoJogador, marcarItem
+  };
   if (typeof module !== 'undefined') module.exports = raiz.Logica;
 })(typeof window !== 'undefined' ? window : globalThis);
