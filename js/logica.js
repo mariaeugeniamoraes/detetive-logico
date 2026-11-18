@@ -43,7 +43,50 @@
     return lista;
   }
 
+  const SIMBOLO = { e: ' ∧ ', ou: ' ∨ ', se: ' → ', sse: ' ↔ ' };
 
-  raiz.Logica = { atomo, nao, e, ou, se, sse, avaliar, solucoes, atomos };
+  function formula(x, letra) {
+    // parênteses em toda subfórmula composta, para a leitura ficar sem ambiguidade
+    const filho = (y) => {
+      const t = formula(y, letra);
+      return y.tipo === 'atomo' || y.tipo === 'nao' ? t : `(${t})`;
+    };
+    switch (x.tipo) {
+      case 'atomo': return letra(x);
+      case 'nao': return '¬' + filho(x.a);
+      case 'e': case 'ou': return x.itens.map(filho).join(SIMBOLO[x.tipo]);
+      default: return filho(x.a) + SIMBOLO[x.tipo] + filho(x.b);
+    }
+  }
+
+  /* Frases de cada átomo. */
+  function textoAtomo(a, cen, negado = false) {
+    if (a.cat === 'S') {
+      const s = cen.suspeitos[a.i];
+      return negado ? `${s.nome} não cometeu o crime` : `${s.nome} cometeu o crime`;
+    }
+    if (a.cat === 'L') {
+      const l = cen.locais[a.i];
+      return `o crime ${negado ? 'não ' : ''}aconteceu ${l.prep} ${l.nome}`;
+    }
+    const w = cen.armas[a.i];
+    return `a arma ${negado ? 'não ' : ''}foi ${w.artigo} ${w.nome}`;
+  }
+
+  const LETRAS = ['P', 'Q', 'R', 'S', 'T', 'U'];
+  function representar(x, cen) {
+    const lista = atomos(x);
+    const letra = (a) => LETRAS[lista.findIndex(b => b.cat === a.cat && b.i === a.i)];
+    return {
+      formula: formula(x, letra),
+      legenda: lista.map(a => ({ letra: letra(a), texto: textoAtomo(a, cen) }))
+    };
+  }
+
+  const NOME_CONECTIVO = { nao: 'Negação', e: 'Conjunção', ou: 'Disjunção', se: 'Condicional', sse: 'Bicondicional', atomo: 'Proposição simples' };
+  const SIMBOLO_CONECTIVO = { nao: '¬', e: '∧', ou: '∨', se: '→', sse: '↔', atomo: '' };
+
+
+  raiz.Logica = { atomo, nao, e, ou, se, sse, avaliar, solucoes, atomos, representar, textoAtomo, NOME_CONECTIVO, SIMBOLO_CONECTIVO };
   if (typeof module !== 'undefined') module.exports = raiz.Logica;
 })(typeof window !== 'undefined' ? window : globalThis);
